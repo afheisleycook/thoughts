@@ -1,21 +1,29 @@
-const express = require("express");
-/*
-name austin heislev-cook
-*/
-const fs = require("fs");
-const db = require("mongodb");
-app = express();
-app.all('/', function(req, res) {
-    let home = fs.readFile("index.html", function(err, data) {
-        return data;
-    });
-    res.send(home);
+var express = require('express');
+var bodyParser = require('body-parser');
+var multer = require('multer');
+var upload = multer();
+var app = express();
 
-});
-app.post('/post', function(req, res) {
-    var title = req.get("title");
-    console.log(title);
-    res.send(title.toString());
+app.get('/', function(req, res){
+   res.render('form');
 });
 
-app.listen(8000);
+app.set('view engine', 'pug');
+app.set('views', './views');
+
+// for parsing application/json
+app.use(bodyParser.json()); 
+
+// for parsing application/xwww-
+app.use(bodyParser.urlencoded({ extended: true })); 
+//form-urlencoded
+
+// for parsing multipart/form-data
+app.use(upload.array()); 
+app.use(express.static('public'));
+
+app.post('/', function(req, res){
+   console.log(req.body);
+   res.send("recieved your request!");
+});
+app.listen(3010);
