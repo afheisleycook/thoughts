@@ -1,25 +1,30 @@
 "use strict";
 
-var express = require("express");
-/*
-name austin heislev-cook
-*/
+var express = require('express');
 
+var bodyParser = require('body-parser');
 
-var fs = require("fs");
+var multer = require('multer');
 
-var db = require("mongodb");
-
-app = express();
-app.all('/', function(req, res) {
-    var home = fs.readFile("index.html", function(err, data) {
-        return data.toString();
-    });
-    res.send(home);
+var upload = multer();
+var app = express();
+app.get('/', function (req, res) {
+  res.render('form');
 });
-app.post('/post', function(req, res) {
-    var title = req.get("title");
-    console.log(title);
-    res.send(title.toString());
+app.set('view engine', 'pug');
+app.set('views', './views'); // for parsing application/json
+
+app.use(bodyParser.json()); // for parsing application/xwww-
+
+app.use(bodyParser.urlencoded({
+  extended: true
+})); //form-urlencoded
+// for parsing multipart/form-data
+
+app.use(upload.array());
+app.use(express["static"]('public'));
+app.post('/add', function (req, res) {
+  var data = req.body;
+  console.log(data);
 });
-app.listen(8000);
+app.listen(3010);
