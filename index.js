@@ -3,8 +3,12 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 var upload = multer();
 var app = express();
-
+var sqlite = require("sqlite3");
+const sqlite3 = require('sqlite3');
 app.get('/', function(req, res) {
+    res.render('home');
+});
+app.get('/form', function(req, res) {
     res.render('form');
 });
 
@@ -25,5 +29,8 @@ app.use(express.static('public'));
 app.post('/add', function(req, res) {
     var data = req.body;
     console.log(data);
+    db = sqlite3.Database("thoughts")
+    db.query("insert into THOUGHTS values({data[0]},{data[1]},{data[2]})").then
+    console.log("inserted ", data)
 });
 app.listen(3010);

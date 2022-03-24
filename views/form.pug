@@ -4,14 +4,34 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title thoughts 
+        title thoughts web app
+        style 
+            include thoughts.css
     body 
+       header 
+         h1 thoughts
+       nav
+          ul
+             li 
+                a(href="/") home 
+            
+             li 
+                a(href="/form") add entry
+            
+       main
     
        header(text="welcome to thoughts journal")
        form(action="add", method="post")
-            input(type="text", name="title")
-            input(type="text", name="desc")
-            input(type="text", name="tages")
+                 
+            input(type="text", name="title", placeholder="enter a title")
+            br
+            label(text="desc")
+            input(type="text", name="desc", placeholder="enter a desc")
+            br
+            label(text="tags")
+            input(type="text", name="tages" placeholder="enter a tags")
+            br
             input(type="datetime-local", name="time")
+            br
             input(type="submit", value="add entry!")
     

@@ -4,15 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>thoughts </title>
+    <title>thoughts web app</title>
+    <style>
+               Header {
+            background-color: rebeccapurple;
+            margin: 0 auto;
+            width: 100%;
+            color: white;
+        }
+        
+        nav ul li {
+            display: inline-block;
+            padding: 4px;
+            background-color: purple;
+            color: white;
+        }
+        
+        a {
+            margin-left: auto;
+            margin-top: -4px;
+        }
+    </style>
   </head>
   <body> 
+    <header> 
+      <h1>thoughts</h1>
+    </header>
+    <nav>
+      <ul>
+        <li> <a href="/">home </a></li>
+        <li> <a href="/form">add entry</a></li>
+      </ul>
+    </nav>
+    <main></main>
     <header text="welcome to thoughts journal"></header>
     <form action="add" method="post">
-      <input type="text" name="title">
-      <input type="text" name="desc">
-      <input type="text" name="tages">
-      <input type="datetime-local" name="time">
+      <input type="text" name="title" placeholder="enter a title"><br>
+      <label text="desc"></label>
+      <input type="text" name="desc" placeholder="enter a desc"><br>
+      <label text="tags"></label>
+      <input type="text" name="tages" placeholder="enter a tags"><br>
+      <input type="datetime-local" name="time"><br>
       <input type="submit" value="add entry!">
     </form>
   </body>
