@@ -30,7 +30,7 @@ app.post('/add', function(req, res) {
     var data = req.body;
     console.log(data);
     db = new sqlite3.Database("thoughts.db");
-    db.run("insert into THOUGHTS values(0,{data[0]},{data[1]},{data[2]})").then
+    db.run("insert into THOUGHTS values(0,data[0],data[2],{data[2])").then
     console.log("inserted ", data);
 });
 app.listen(3010);
